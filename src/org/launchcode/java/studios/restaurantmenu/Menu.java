@@ -2,44 +2,36 @@ package org.launchcode.java.studios.restaurantmenu;
 
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Menu {
   private Date lastUpdated;
-  private HashMap<Integer, MenuItem> items;
+  private ArrayList<MenuItem> items= new ArrayList<>();
 
-  public Menu(Date lastUpdated, HashMap<Integer, MenuItem> items) {
+  public Menu(Date lastUpdated, ArrayList items) {
     this.lastUpdated = lastUpdated;
     this.items = items;
   }
 
 
+  public void addItem(MenuItem newItem){
+    this.items.add(newItem);
+  }
+  public void removeItem(MenuItem menuItemToBeRemoved){
+    int index=this.items.indexOf(menuItemToBeRemoved);
+    this.items.remove(index);
+  }
+  public boolean isNewItem(MenuItem item){
+    return item.isNew();
+  }
+  public Date lastMenuUpdate(){
+    return this.lastUpdated;
+  }
+  public void printMenu(){
+    for (MenuItem item : items){
+    System.out.println(item.getName()+": $"+item.getPrice());
+    }
+  }
 
-//
-//  public Date getLastUpdated() {
-//    return lastUpdated;
-//  }
-//
-//  public void setLastUpdated(Date lastUpdated) {
-//    this.lastUpdated = lastUpdated;
-//  }
-//
-//  public ArrayList getMenu() {
-//    return menu;
-//  }
-//
-//  public void setMenu(ArrayList menu) {
-//    this.menu = menu;
-//  }
-//
-//  public Menu(Date lastUpdated, ArrayList menu){
-//    this.lastUpdated=lastUpdated;
-//    this.menu=menu;
-//  }
-//  private ArrayList addMenuItem(Object menuItem){
-//    this.menu.add(menuItem);
-//    return menu;
-//  };
 
 
 }
